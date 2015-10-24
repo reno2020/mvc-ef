@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WikTestModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="WikTestModelStoreContainer">
+    <EntitySet Name="TUser" EntityType="WikTestModel.Store.TUser" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="TUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="RealName" Type="nvarchar" MaxLength="20" />
+    <Property Name="UserPwd" Type="nvarchar" MaxLength="50" />
+    <Property Name="Role" Type="int" />
+    <Property Name="IsAdmin" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <Function Name="proc_DataPageList2000" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableName" Type="varchar" Mode="In" />
+    <Parameter Name="getFields" Type="varchar" Mode="In" />
+    <Parameter Name="keyId" Type="varchar" Mode="In" />
+    <Parameter Name="strOrder" Type="varchar" Mode="In" />
+    <Parameter Name="strWhere" Type="varchar" Mode="In" />
+    <Parameter Name="pageIndex" Type="int" Mode="In" />
+    <Parameter Name="pageSize" Type="int" Mode="In" />
+    <Parameter Name="isCount" Type="int" Mode="In" />
+  </Function>
+</Schema>

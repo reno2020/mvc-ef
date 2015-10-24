@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WikTestModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="WikTestModelStoreContainer">
+          <EntitySet Name="TUser" EntityType="WikTestModel.Store.TUser" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="TUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="RealName" Type="nvarchar" MaxLength="20" />
+          <Property Name="UserPwd" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="int" />
+          <Property Name="IsAdmin" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Function Name="proc_DataPageList2000" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tableName" Type="varchar" Mode="In" />
+          <Parameter Name="getFields" Type="varchar" Mode="In" />
+          <Parameter Name="keyId" Type="varchar" Mode="In" />
+          <Parameter Name="strOrder" Type="varchar" Mode="In" />
+          <Parameter Name="strWhere" Type="varchar" Mode="In" />
+          <Parameter Name="pageIndex" Type="int" Mode="In" />
+          <Parameter Name="pageSize" Type="int" Mode="In" />
+          <Parameter Name="isCount" Type="int" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WikTestModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="WikTestEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TUser" EntityType="WikTestModel.TUser" />
+        </EntityContainer>
+        <EntityType Name="TUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="RealName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="UserPwd" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Role" Type="Int32" />
+          <Property Name="IsAdmin" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WikTestModelStoreContainer" CdmEntityContainer="WikTestEntities">
+          <EntitySetMapping Name="TUser"><EntityTypeMapping TypeName="WikTestModel.TUser"><MappingFragment StoreEntitySet="TUser">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="RealName" ColumnName="RealName" />
+            <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+            <ScalarProperty Name="Role" ColumnName="Role" />
+            <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="WikEasyUIMvc">
+        <EntityTypeShape EntityType="WikTestModel.TUser" Width="1.5" PointX="0.75" PointY="0.75" Height="2.128072916666667" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

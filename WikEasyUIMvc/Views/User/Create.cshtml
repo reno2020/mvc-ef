@@ -1,0 +1,97 @@
+﻿@model WikEasyUIMvc.TUser
+
+@{
+    Layout = null;
+}
+
+<script type="text/javascript">
+
+    $(function () {
+
+      //这里写新建时初始化控件的值
+        //入库表单校验
+        $("#add_form").validate({
+			submitHandler: function (form) {
+                        ajaxAdd();
+			}
+		});
+    });
+    
+</script>
+
+@using (Html.BeginForm("Create", "User", FormMethod.Post, new { id = "add_form" }))
+{
+<fieldset>
+<table class="editForm">
+
+	<tr>
+		<td>
+            @Html.LabelFor(model => model.UserName,"账号:")
+		</td>
+		<td>
+            @Html.TextBoxFor(model => model.UserName,new{@id="ipt_UserName"})
+		</td>
+	</tr>
+		
+
+
+	<tr>
+		<td>
+            @Html.LabelFor(model => model.RealName,"真实姓名:")
+		</td>
+		<td>
+            @Html.TextBoxFor(model => model.RealName, new { @id = "ipt_RealName", @class = "easyui-validatebox", required = "true" })
+		</td>
+	</tr>
+		
+
+
+	<tr>
+		<td>
+            @Html.LabelFor(model => model.UserPwd,"密码:")
+		</td>
+		<td>
+            @Html.TextBoxFor(model => model.UserPwd,new{@id="ipt_UserPwd"})
+		</td>
+	</tr>
+		
+
+
+	<tr>
+		<td>
+            @Html.LabelFor(model => model.Role,"角色:")
+		</td>
+		<td>
+          @*  @Html.TextBoxFor(model => model.Role,new{@id="c_Role"})*@
+              @Html.DropDownListFor(model => model.Role, new SelectList(new[] { "管理员", "普通用户" }))
+		</td>
+	</tr>
+		
+
+
+	<tr>
+		<td>
+            @Html.LabelFor(model => model.IsAdmin,"是否超级管理员:")
+		</td>
+		<td>
+        @*    @Html.TextBoxFor(model => model.IsAdmin,new{@id="ipt_IsAdmin"})*@
+           
+            @Html.DropDownListFor(model=>model.IsAdmin,new SelectList(new[]{"是","否"}))
+		</td>
+	</tr>
+		
+
+
+	<tr>
+		<td>
+            @Html.LabelFor(model => model.Email,"邮箱:")
+		</td>
+		<td>
+            @Html.TextBoxFor(model => model.Email,new{@id="ipt_Email"})
+		</td>
+	</tr>
+		
+
+</table>
+</fieldset>
+}

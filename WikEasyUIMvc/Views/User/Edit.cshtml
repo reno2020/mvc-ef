@@ -1,0 +1,86 @@
+﻿@model WikEasyUIMvc.TUser
+
+@{
+    Layout = null;
+}
+<script type="text/javascript">
+    $(function () {
+        //这里写加载下拉列表、修改编辑控件的初始化值
+         //表单校验
+        $("#edit_form").validate({
+			submitHandler: function (form) {
+                        ajaxEdit();
+			}
+		});
+
+
+    });
+</script>
+@using (Html.BeginForm("Edit", "User", FormMethod.Post, new { id = "edit_form" }))
+{
+<fieldset>
+<table class="editForm">
+        @Html.HiddenFor(model => model.ID)
+
+        
+		<tr>
+			<td>
+            @Html.LabelFor(model => model.UserName,"账号")
+			</td>
+			<td>
+            @Html.TextBoxFor(model => model.UserName,new{@id="e_UserName"})
+			</td>
+		</tr>
+        
+		<tr>
+			<td>
+            @Html.LabelFor(model => model.RealName,"姓名")
+			</td>
+			<td>
+            @Html.TextBoxFor(model => model.RealName,new{@id="e_RealName"})
+			</td>
+		</tr>
+        
+		<tr>
+			<td>
+            @Html.LabelFor(model => model.UserPwd,"密码")
+			</td>
+			<td>
+            @Html.TextBoxFor(model => model.UserPwd,new{@id="e_UserPwd"})
+			</td>
+		</tr>
+        
+		<tr>
+			<td>
+            @Html.LabelFor(model => model.Role,"角色")
+			</td>
+			<td>
+        @*    @Html.TextBoxFor(model => model.Role,new{@id="e_Role"})*@
+         @Html.DropDownListFor(model => model.Role, new SelectList(new[] { "管理员", "普通用户" }))
+			</td>
+		</tr>
+        
+		<tr>
+			<td>
+            @Html.LabelFor(model => model.IsAdmin,"是否超级管理员")
+			</td>
+			<td>
+         @*   @Html.TextBoxFor(model => model.IsAdmin,new{@id="e_IsAdmin"})*@
+          
+            @Html.DropDownListFor(model=>model.IsAdmin,new SelectList(new[]{"是","否"}))
+			</td>
+		</tr>
+        
+		<tr>
+			<td>
+            @Html.LabelFor(model => model.Email,"邮箱")
+			</td>
+			<td>
+            @Html.TextBoxFor(model => model.Email,new{@id="e_Email"})
+			</td>
+		</tr>
+    
+</table>
+</fieldset>
+}
+

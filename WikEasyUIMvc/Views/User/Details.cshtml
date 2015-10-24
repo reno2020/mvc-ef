@@ -1,0 +1,46 @@
+﻿@model WikEasyUIMvc.TUser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TUser</legend>
+
+    <div class="display-label">UserName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserName)
+    </div>
+
+    <div class="display-label">RealName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RealName)
+    </div>
+
+    <div class="display-label">UserPwd</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserPwd)
+    </div>
+
+    <div class="display-label">Role</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Role)
+    </div>
+
+    <div class="display-label">IsAdmin</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsAdmin)
+    </div>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
