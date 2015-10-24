@@ -50,7 +50,7 @@ namespace WikEasyUIMvc.Controllers
             return json;
         }
         
-        //
+        //编辑的 jhl
         // GET: /User/Edit/5
         [OutputCache(Location = OutputCacheLocation.None)]
         public ActionResult Edit(int id)
